@@ -18,8 +18,17 @@
     <Reference Include="CardChoiceSpawnUniqueCardPatch">
       <HintPath>..\..\..\Users\malka\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\ModTest\BepInEx\plugins\Pykess-CardChoiceSpawnUniqueCardPatch\CardChoiceSpawnUniqueCardPatch.dll</HintPath>
     </Reference>
+    <Reference Include="ClassesManagerReborn">
+      <HintPath>..\..\..\Users\malka\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\ModTest\BepInEx\plugins\Root-Classes_Manager_Reborn\ClassesManagerReborn.dll</HintPath>
+    </Reference>
+    <Reference Include="MMHOOK_Assembly-CSharp">
+      <HintPath>..\..\..\Users\malka\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\ModTest\BepInEx\plugins\willis81808-MMHook\MMHOOK_Assembly-CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="ModdingUtils">
       <HintPath>..\..\..\Users\malka\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\ModTest\BepInEx\plugins\Pykess-ModdingUtils\ModdingUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="RarityLib">
+      <HintPath>..\..\..\Users\malka\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\ModTest\BepInEx\plugins\Root-RarityLib\RarityLib.dll</HintPath>
     </Reference>
     <Reference Include="UnboundLib">
       <HintPath>..\..\..\Users\malka\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\ModTest\BepInEx\plugins\willis81808-UnboundLib\UnboundLib.dll</HintPath>

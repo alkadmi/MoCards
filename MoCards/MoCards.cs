@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using UnboundLib;
 using UnboundLib.Cards;
+using ClassesManagerReborn;
 using MoCards.Cards;
 using HarmonyLib;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
@@ -9,6 +10,7 @@ using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 namespace MoCards
 {
     // These are the mods required for our mod to work
+    [BepInDependency("root.classes.manager.reborn")]
     [BepInDependency("com.willis.rounds.unbound", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("pykess.rounds.plugins.moddingutils", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("pykess.rounds.plugins.cardchoicespawnuniquecardpatch", BepInDependency.DependencyFlags.HardDependency)]
@@ -35,6 +37,10 @@ namespace MoCards
         {
             instance = this;
             CustomCard.BuildCard<EvasiveManeuvers>();
+            CustomCard.BuildCard<Bouncer>();
+            CustomCard.BuildCard<ExtraBounces>();
+            CustomCard.BuildCard<HealingBounces>();
+            CustomCard.BuildCard<UnblockableBounces>();
         }
     }
 }
