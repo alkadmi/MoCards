@@ -41,6 +41,7 @@ namespace MoCards
             CustomCard.BuildCard<ExtraBounces>();
             CustomCard.BuildCard<HealingBounces>();
             CustomCard.BuildCard<UnblockableBounces>();
+            CustomCard.BuildCard<FasterBounces>();
         }
     }
 }
