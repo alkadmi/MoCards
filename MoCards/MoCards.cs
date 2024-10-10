@@ -36,7 +36,7 @@ namespace MoCards
         void Start()
         {
             instance = this;
-            CustomCard.BuildCard<EvasiveManeuvers>();
+            //CustomCard.BuildCard<EvasiveManeuvers>();
             CustomCard.BuildCard<Bouncer>();
             CustomCard.BuildCard<ExtraBounces>();
             CustomCard.BuildCard<HealingBounces>();
