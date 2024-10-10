@@ -17,10 +17,10 @@ namespace MoCards.Cards
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            cardInfo.allowMultiple = true;
+            cardInfo.allowMultiple = false;
 
             gun.reflects = 5;
-            gun.speedMOnBounce = 1.25f;
+            gun.speedMOnBounce = 1.50f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
@@ -80,7 +80,7 @@ namespace MoCards.Cards
                 {
                     positive = true,
                     stat = "Bullet Speed Per Bounce",
-                    amount = "25% more",
+                    amount = "50% more",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
