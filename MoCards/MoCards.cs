@@ -5,6 +5,8 @@ using ClassesManagerReborn;
 using MoCards.Cards;
 using HarmonyLib;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
+using UnityEngine;
+using System.Collections.Generic;
 
 
 namespace MoCards
@@ -42,6 +44,7 @@ namespace MoCards
             CustomCard.BuildCard<HealingBounces>();
             CustomCard.BuildCard<UnblockableBounces>();
             CustomCard.BuildCard<FasterBounces>();
+            CustomCard.BuildCard<ExplosiveBounces>();
         }
     }
 }

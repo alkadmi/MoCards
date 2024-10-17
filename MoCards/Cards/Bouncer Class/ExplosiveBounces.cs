@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using CardChoiceSpawnUniqueCardPatch.CustomCategories;
+using ModdingUtils.Extensions;
+using UnityEngine.UI;
 using ClassesManagerReborn.Util;
-using System.Reflection;
-using System.Collections.ObjectModel;
-using UnboundLib.Utils;
+using ClassesManagerReborn;
+using ClassesManagerReborn.Patchs;
+using RarityLib.Utils;
 
 namespace MoCards.Cards
 {
@@ -17,27 +20,24 @@ namespace MoCards.Cards
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            cardInfo.allowMultiple = true;
+            cardInfo.allowMultiple = false;
 
-            gun.reflects = 5;
-            gun.attackSpeed = .85f;
+            gun.reflects = 3;
+            gun.attackSpeed = 1.15f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            List<CardInfo> activecards = ((ObservableCollection<CardInfo>)typeof(CardManager).GetField("activeCards", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null)).ToList();
-            List<CardInfo> inactivecards = (List<CardInfo>)typeof(CardManager).GetField("inactiveCards", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
-            List<CardInfo> allcards = activecards.Concat(inactivecards).ToList();
+            ObjectsToSpawn objectsToSpawn = ((GameObject)Resources.Load("0 cards/Timed detonation")).GetComponent<Gun>().objectsToSpawn[0];
 
-            CardInfo targetBounceCard = allcards.Where(card => card.gameObject.name == "TargetBounce").ToList()[0];
-            Gun targetBounceGun = targetBounceCard.GetComponent<Gun>();
-            ObjectsToSpawn screenEdgeToSpawn = (new List<ObjectsToSpawn>(targetBounceGun.objectsToSpawn)).Where(objectToSpawn => objectToSpawn.AddToProjectile.GetComponent<ScreenEdgeBounce>() != null).ToList()[0];
+            List<ObjectsToSpawn> list = gun.objectsToSpawn.ToList();
+            list.Add(
+                objectsToSpawn
+            );
 
 
-            List<ObjectsToSpawn> objectsToSpawn = gun.objectsToSpawn.ToList();
-            objectsToSpawn.Add(screenEdgeToSpawn);
-            gun.objectsToSpawn = objectsToSpawn.ToArray();
+            gun.objectsToSpawn = list.ToArray();
 
             //Edits values on player when card is selected
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
@@ -51,11 +51,11 @@ namespace MoCards.Cards
 
         protected override string GetTitle()
         {
-            return "Extra Bounces";
+            return "Explosive Bounces";
         }
         protected override string GetDescription()
         {
-            return "Shoot those bullets faster to get more bounces";
+            return "Bullets explode on bounce";
         }
         protected override GameObject GetCardArt()
         {
@@ -63,7 +63,7 @@ namespace MoCards.Cards
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Rare;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -73,14 +73,14 @@ namespace MoCards.Cards
                 {
                     positive = true,
                     stat = "Bounces",
-                    amount = "+5",
+                    amount = "+3",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
+                    positive = false,
                     stat = "attack speed",
-                    amount = "-15%",
+                    amount = "+15%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

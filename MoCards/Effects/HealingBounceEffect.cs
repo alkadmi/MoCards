@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnboundLib;
+using HarmonyLib;
+using Object = UnityEngine.Object;
 
 namespace MoCards.Effects
 {
@@ -12,12 +14,11 @@ namespace MoCards.Effects
     {
         public override void DealtDamage(Vector2 damage, bool selfDamage, Player damagedPlayer = null)
         {
-
             if (selfDamage || (damagedPlayer != null && damagedPlayer.teamID == this.gameObject.GetComponent<Player>().teamID))//self or same team
             {
-
                 damagedPlayer.data.healthHandler.Heal(damage.magnitude);
                 Unbound.Instance.ExecuteAfterFrames(2, () => damagedPlayer.data.healthHandler.Heal(damage.magnitude));
+                selfDamage = false;
             }
         }
 
