@@ -13,29 +13,19 @@ using UnboundLib.Utils;
 
 namespace MoCards.Cards
 {
-    class ExtraBounces : CustomCard
+    class ExplosiveBounces : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
-            cardInfo.allowMultiple = false;
+            cardInfo.allowMultiple = true;
 
-            gun.reflects = 3;
-            gun.attackSpeed = 1.15f;
+            gun.reflects = 5;
+            gun.attackSpeed = .85f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            ObjectsToSpawn objectsToSpawn = ((GameObject)Resources.Load("0 cards/Mayhem")).GetComponent<Gun>().objectsToSpawn[0];
-
-            List<ObjectsToSpawn> list = gun.objectsToSpawn.ToList();
-            list.Add(
-                objectsToSpawn
-            );
-
-
-            gun.objectsToSpawn = list.ToArray();
-
             List<CardInfo> activecards = ((ObservableCollection<CardInfo>)typeof(CardManager).GetField("activeCards", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null)).ToList();
             List<CardInfo> inactivecards = (List<CardInfo>)typeof(CardManager).GetField("inactiveCards", BindingFlags.NonPublic | BindingFlags.Static).GetValue(null);
             List<CardInfo> allcards = activecards.Concat(inactivecards).ToList();
@@ -45,9 +35,9 @@ namespace MoCards.Cards
             ObjectsToSpawn screenEdgeToSpawn = (new List<ObjectsToSpawn>(targetBounceGun.objectsToSpawn)).Where(objectToSpawn => objectToSpawn.AddToProjectile.GetComponent<ScreenEdgeBounce>() != null).ToList()[0];
 
 
-            List<ObjectsToSpawn> objectsSpawn = gun.objectsToSpawn.ToList();
-            objectsSpawn.Add(screenEdgeToSpawn);
-            gun.objectsToSpawn = objectsSpawn.ToArray();
+            List<ObjectsToSpawn> objectsToSpawn = gun.objectsToSpawn.ToList();
+            objectsToSpawn.Add(screenEdgeToSpawn);
+            gun.objectsToSpawn = objectsToSpawn.ToArray();
 
             //Edits values on player when card is selected
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
@@ -61,7 +51,7 @@ namespace MoCards.Cards
 
         protected override string GetTitle()
         {
-            return "Explosive Bounces";
+            return "Extra Bounces";
         }
         protected override string GetDescription()
         {
