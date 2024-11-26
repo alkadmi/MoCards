@@ -21,6 +21,9 @@
     <Reference Include="ClassesManagerReborn">
       <HintPath>..\..\..\Users\malka\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\ModTest\BepInEx\plugins\Root-Classes_Manager_Reborn\ClassesManagerReborn.dll</HintPath>
     </Reference>
+    <Reference Include="CosmicRounds">
+      <HintPath>..\..\..\Users\malka\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\Together\BepInEx\plugins\XAngelMoonX-CR\CosmicRounds.dll</HintPath>
+    </Reference>
     <Reference Include="MMHOOK_Assembly-CSharp">
       <HintPath>..\..\..\Users\malka\AppData\Roaming\Thunderstore Mod Manager\DataFolder\ROUNDS\profiles\ModTest\BepInEx\plugins\willis81808-MMHook\MMHOOK_Assembly-CSharp.dll</HintPath>
     </Reference>

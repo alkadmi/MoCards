@@ -7,39 +7,38 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
-
 namespace MoCards.Cards
 {
-    class EvasiveManeuvers : CustomCard
+    class Crusher : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
-            block.forceToAdd = -10f;
-            statModifiers.health = 1.2f;
-            block.cdAdd = 0.25f;
-
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
+            
+            ((Component)player).gameObject.AddComponent<CR.MonoBehaviors.CrushMono>();
+            data.maxHealth *= 1.3f;
+            block.cdAdd += 0.5f;
             //Edits values on player when card is selected
+            //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
         }
         public override void OnRemoveCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been removed from player {player.playerID}.");
             //Run when the card is removed from the player
+            //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been removed from player {player.playerID}.");
         }
 
 
         protected override string GetTitle()
         {
-            return "Evasive Maneuvers";
+            return "Crush";
         }
         protected override string GetDescription()
         {
-            return "Jump backwards when you block.";
+            return "Crush your opponents to death";
         }
         protected override GameObject GetCardArt()
         {
@@ -57,14 +56,14 @@ namespace MoCards.Cards
                 {
                     positive = true,
                     stat = "Health",
-                    amount = "+20%",
+                    amount = "30%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Block Cooldown",
-                    amount = "+.25s",
+                    amount = "0.5s",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

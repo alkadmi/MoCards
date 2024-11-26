@@ -16,6 +16,7 @@ namespace MoCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             block.additionalBlocks = 1;
+            block.cdMultiplier = .90f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
@@ -33,11 +34,11 @@ namespace MoCards.Cards
 
         protected override string GetTitle()
         {
-            return "CardName";
+            return "Angry Blocker";
         }
         protected override string GetDescription()
         {
-            return "CardDescription";
+            return "Become an angry blocking maniac";
         }
         protected override GameObject GetCardArt()
         {
@@ -54,8 +55,15 @@ namespace MoCards.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Effect",
-                    amount = "No",
+                    stat = "Blocks",
+                    amount = "1",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                },
+                new CardInfoStat()
+                {
+                    positive = true,
+                    stat = "Block cooldown",
+                    amount = "10%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
