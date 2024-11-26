@@ -48,6 +48,7 @@ namespace MoCards.Cards
 
             gun.projectileColor = Color.magenta;
             effect = player.gameObject.GetOrAddComponent<HealingBounceEffect>();
+            
 
             //Edits values on player when card is selected
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnboundLib;
 using HarmonyLib;
-using Object = UnityEngine.Object;
 
 namespace MoCards.Effects
 {
@@ -17,8 +16,7 @@ namespace MoCards.Effects
             if (selfDamage || (damagedPlayer != null && damagedPlayer.teamID == this.gameObject.GetComponent<Player>().teamID))//self or same team
             {
                 damagedPlayer.data.healthHandler.Heal(damage.magnitude);
-                Unbound.Instance.ExecuteAfterFrames(2, () => damagedPlayer.data.healthHandler.Heal(damage.magnitude));
-                selfDamage = false;
+                Unbound.Instance.ExecuteAfterFrames(0, () => damagedPlayer.data.healthHandler.Heal(damage.magnitude));
             }
         }
 
