@@ -10,6 +10,7 @@ using ClassesManagerReborn.Util;
 using System.Reflection;
 using System.Collections.ObjectModel;
 using UnboundLib.Utils;
+using ModdingUtils.Extensions;
 
 namespace MoCards.Cards
 {
@@ -17,6 +18,7 @@ namespace MoCards.Cards
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            CardInfoExtension.GetAdditionalData(cardInfo).canBeReassigned = false;
             cardInfo.allowMultiple = false;
 
             gun.reflects = -10;

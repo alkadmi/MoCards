@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using MoCards.Patches;
 
 
+
 namespace MoCards
 {
     // These are the mods required for our mod to work
@@ -46,8 +47,10 @@ namespace MoCards
             CustomCard.BuildCard<UnblockableBounces>();
             CustomCard.BuildCard<FasterBounces>();
             CustomCard.BuildCard<ExplosiveBounces>();
+            CustomCard.BuildCard<StrongerBounces>();
             CustomCard.BuildCard<AngryBlocker>();
             CustomCard.BuildCard<Crusher>();
+            CustomCard.BuildCard<SawAdd>();
         }
     }
 }

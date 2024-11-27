@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModdingUtils.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,12 +15,12 @@ namespace MoCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
+            CardInfoExtension.GetAdditionalData(cardInfo).canBeReassigned = false;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            
             ((Component)player).gameObject.AddComponent<CR.MonoBehaviors.CrushMono>();
             data.maxHealth *= 1.3f;
             block.cdAdd += 0.5f;

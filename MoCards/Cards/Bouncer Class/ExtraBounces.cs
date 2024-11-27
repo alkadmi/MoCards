@@ -10,6 +10,7 @@ using ClassesManagerReborn.Util;
 using System.Reflection;
 using System.Collections.ObjectModel;
 using UnboundLib.Utils;
+using ModdingUtils.Extensions;
 
 namespace MoCards.Cards
 {
@@ -18,7 +19,7 @@ namespace MoCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = true;
-
+            CardInfoExtension.GetAdditionalData(cardInfo).canBeReassigned = false;
             gun.reflects = 5;
             gun.attackSpeed = .85f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`

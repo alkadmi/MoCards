@@ -22,7 +22,7 @@ namespace MoCards.Cards
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
-
+            CardInfoExtension.GetAdditionalData(cardInfo).canBeReassigned = false;
             gun.reflects = -5;
             gun.damage = .75f;
             gun.attackSpeed = 1.25f;

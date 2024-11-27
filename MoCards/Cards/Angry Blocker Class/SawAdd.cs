@@ -6,39 +6,32 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
-using CardChoiceSpawnUniqueCardPatch.CustomCategories;
+using MoCards;
+using ModdingUtils.Utils;
+using UnboundLib.Networking;
+using Rounds;
+using HarmonyLib;
+using ModdingUtils;
+using Photon.Pun;
+using UnboundLib.Utils;
+using static System.Net.Mime.MediaTypeNames;
 using ModdingUtils.Extensions;
-using UnityEngine.UI;
-using ClassesManagerReborn.Util;
-using ClassesManagerReborn;
-using ClassesManagerReborn.Patchs;
-using RarityLib.Utils;
 
 namespace MoCards.Cards
 {
-    class ExplosiveBounces : CustomCard
+    class SawAdd : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
             CardInfoExtension.GetAdditionalData(cardInfo).canBeReassigned = false;
-            gun.reflects = 3;
-            gun.attackSpeed = 1.15f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            ObjectsToSpawn objectsToSpawn = ((GameObject)Resources.Load("0 cards/Timed detonation")).GetComponent<Gun>().objectsToSpawn[0];
-
-            List<ObjectsToSpawn> list = gun.objectsToSpawn.ToList();
-            list.Add(
-                objectsToSpawn
-            );
-
-
-            gun.objectsToSpawn = list.ToArray();
-
+            CardInfo cardWithObjectName = ModdingUtils.Utils.Cards.instance.GetCardWithObjectName("Saw");
+            ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardWithObjectName, false, "", 0f, 0f);
             //Edits values on player when card is selected
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
         }
@@ -51,11 +44,11 @@ namespace MoCards.Cards
 
         protected override string GetTitle()
         {
-            return "Explosive Bounces";
+            return "Saw Add";
         }
         protected override string GetDescription()
         {
-            return "Bullets explode on bounce";
+            return "Saw your opponents";
         }
         protected override GameObject GetCardArt()
         {
@@ -72,15 +65,15 @@ namespace MoCards.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Bounces",
-                    amount = "+3",
+                    stat = "Health",
+                    amount = "30%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = false,
-                    stat = "attack speed",
-                    amount = "+15%",
+                    stat = "Block Cooldown",
+                    amount = "0.25s",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
