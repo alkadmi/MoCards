@@ -7,6 +7,7 @@ using HarmonyLib;
 using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using UnityEngine;
 using System.Collections.Generic;
+using MoCards.Patches;
 
 
 namespace MoCards
@@ -32,15 +33,16 @@ namespace MoCards
         void Awake()
         {
             // Use this to call any harmony patch files your mod may have
-            var harmony = new Harmony(ModId);
+            var harmony = new Harmony("com.rounds.alkadmi.MoCards");
             harmony.PatchAll();
+            
         }
         void Start()
         {
             instance = this;
             CustomCard.BuildCard<Bouncer>();
             CustomCard.BuildCard<ExtraBounces>();
-            CustomCard.BuildCard<HealingBounces>();
+            CustomCard.BuildCard<LoyalBounces>();
             CustomCard.BuildCard<UnblockableBounces>();
             CustomCard.BuildCard<FasterBounces>();
             CustomCard.BuildCard<ExplosiveBounces>();

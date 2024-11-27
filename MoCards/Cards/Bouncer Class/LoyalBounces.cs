@@ -16,18 +16,18 @@ using ModdingUtils.Extensions;
 
 namespace MoCards.Cards
 {
-    class HealingBounces : CustomCard
+    class LoyalBounces : CustomCard
     {
-        public HealingBounceEffect effect = null;
+        public NoSelfDamageBounceEffect effect = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
 
-            gun.reflects = -10;
-            gun.damage = .50f;
-            gun.attackSpeed = 1.50f;
-            gun.projectileSpeed = .50f;
-            statModifiers.health = .25f;
+            gun.reflects = -5;
+            gun.damage = .75f;
+            gun.attackSpeed = 1.25f;
+            gun.projectileSpeed = .75f;
+            statModifiers.health = .50f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
@@ -47,7 +47,7 @@ namespace MoCards.Cards
             gun.objectsToSpawn = objectsToSpawn.ToArray();
 
             gun.projectileColor = Color.magenta;
-            effect = player.gameObject.GetOrAddComponent<HealingBounceEffect>();
+            effect = player.gameObject.GetOrAddComponent<NoSelfDamageBounceEffect>();
             
 
             //Edits values on player when card is selected
@@ -64,11 +64,11 @@ namespace MoCards.Cards
 
         protected override string GetTitle()
         {
-            return "Healing Bounces";
+            return "Loyal Bounces";
         }
         protected override string GetDescription()
         {
-            return "Tired of Killing yourself, just heal yourself";
+            return "Tired of Killing yourself, buy better bullets";
         }
         protected override GameObject GetCardArt()
         {
@@ -86,35 +86,35 @@ namespace MoCards.Cards
                 {
                     positive = false,
                     stat = "Bounces",
-                    amount = "-10",
+                    amount = "-5",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Damage",
-                    amount = "-50%",
+                    amount = "-25%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Attack Speed",
-                    amount = "50% more",
+                    amount = "25% more",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Bullet Speed",
-                    amount = "50% less",
+                    amount = "25% less",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
                     positive = false,
                     stat = "Health",
-                    amount = "75% less",
+                    amount = "50% less",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
