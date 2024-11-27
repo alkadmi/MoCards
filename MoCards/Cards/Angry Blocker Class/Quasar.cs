@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
+using static CardInfoStat;
 
 namespace MoCards.Cards
 {
-    class Crusher : CustomCard
+    class Quasar : CustomCard
     {
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
             CardInfoExtension.GetAdditionalData(cardInfo).canBeReassigned = false;
-            
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
-            ((Component)player).gameObject.AddComponent<CR.MonoBehaviors.CrushMono>();
+            ((Component)player).gameObject.AddComponent<CR.MonoBehaviors.QuasarMono>();
 
-            data.maxHealth *= 1.3f;
-            block.cdAdd += 0.5f;
+            characterStats.movementSpeed *= 0.8f;
+            block.cdMultiplier *= 1.25f;
             //Edits values on player when card is selected
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
         }
@@ -38,11 +38,11 @@ namespace MoCards.Cards
 
         protected override string GetTitle()
         {
-            return "Crush";
+            return "Quasar";
         }
         protected override string GetDescription()
         {
-            return "Crush your opponents to death";
+            return "Summon a black hole when you block";
         }
         protected override GameObject GetCardArt()
         {
@@ -56,19 +56,19 @@ namespace MoCards.Cards
         {
             return new CardInfoStat[]
             {
-                new CardInfoStat()
+                new CardInfoStat
                 {
-                    positive = true,
-                    stat = "Health",
-                    amount = "30%",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                    positive = false,
+                    stat = "Movement Speed",
+                    amount = "-20%",
+                    simepleAmount = (SimpleAmount)1
                 },
-                new CardInfoStat()
+                new CardInfoStat
                 {
                     positive = false,
                     stat = "Block Cooldown",
-                    amount = "0.5s",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
+                    amount = "+25%",
+                    simepleAmount = (SimpleAmount)0
                 }
             };
         }

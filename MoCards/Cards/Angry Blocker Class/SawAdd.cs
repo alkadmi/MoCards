@@ -48,7 +48,7 @@ namespace MoCards.Cards
         }
         protected override string GetDescription()
         {
-            return "Saw your opponents";
+            return "Saw your opponents to death";
         }
         protected override GameObject GetCardArt()
         {

@@ -51,6 +51,7 @@ namespace MoCards
             CustomCard.BuildCard<AngryBlocker>();
             CustomCard.BuildCard<Crusher>();
             CustomCard.BuildCard<SawAdd>();
+            CustomCard.BuildCard<Quasar>();
         }
     }
 }
