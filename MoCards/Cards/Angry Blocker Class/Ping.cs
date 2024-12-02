@@ -41,7 +41,7 @@ namespace MoCards.Cards
 
         public override void Callback()
         {
-            ExtensionMethods.GetOrAddComponent<ClassNameMono>(((Component)this).gameObject, false).className = AngryBlockerClass.name;
+            ExtensionMethods.GetOrAddComponent<ClassNameMono>(((Component)this).gameObject, false);
         }
         protected override string GetTitle()
         {
