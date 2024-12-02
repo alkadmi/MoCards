@@ -8,6 +8,7 @@ using CardChoiceSpawnUniqueCardPatch.CustomCategories;
 using UnityEngine;
 using System.Collections.Generic;
 using MoCards.Patches;
+using System;
 
 
 
@@ -41,26 +42,26 @@ namespace MoCards
         void Start()
         {
             instance = this;
-            CustomCard.BuildCard<Bouncer>();
-            CustomCard.BuildCard<ExtraBounces>();
-            CustomCard.BuildCard<LoyalBounces>();
-            CustomCard.BuildCard<UnblockableBounces>();
-            CustomCard.BuildCard<FasterBounces>();
-            CustomCard.BuildCard<ExplosiveBounces>();
-            CustomCard.BuildCard<StrongerBounces>();
-            CustomCard.BuildCard<AngryBlocker>();
-            CustomCard.BuildCard<Crusher>();
-            CustomCard.BuildCard<SawAdd>();
-            CustomCard.BuildCard<Quasar>();
-            CustomCard.BuildCard<Cards.Ping>();
-            CustomCard.BuildCard<Holster>();
-            CustomCard.BuildCard<Quantum>();
-            CustomCard.BuildCard<EmpowerAdd>();
-            CustomCard.BuildCard<FrostSlamAdd>();
-            CustomCard.BuildCard<ImplodeAdd>();
-            CustomCard.BuildCard<StaticFieldAdd>();
-            CustomCard.BuildCard<SupernovaAdd>();
-            CustomCard.BuildCard<GetCloser>();
+            CustomCard.BuildCard<Bouncer>((card) => Bouncer.card = card);
+            CustomCard.BuildCard<ExtraBounces>((card) => ExtraBounces.card = card);
+            CustomCard.BuildCard<LoyalBounces>((card) => LoyalBounces.card = card);
+            CustomCard.BuildCard<UnblockableBounces>((card) => UnblockableBounces.card = card);
+            CustomCard.BuildCard<FasterBounces>((card) => FasterBounces.card = card);
+            CustomCard.BuildCard<ExplosiveBounces>((card) => ExplosiveBounces.card = card);
+            CustomCard.BuildCard<StrongerBounces>((card) => StrongerBounces.card = card);
+            CustomCard.BuildCard<AngryBlocker>((card) => AngryBlocker.card = card);
+            CustomCard.BuildCard<Crusher>((card) => Crusher.card = card);
+            CustomCard.BuildCard<SawAdd>(((card) => SawAdd.card = card));
+            CustomCard.BuildCard<Quasar>((card) => Quasar.card = card);
+            CustomCard.BuildCard<Cards.Ping>((card) => Cards.Ping.card = card);
+            CustomCard.BuildCard<Holster>((card) => Holster.card = card);
+            CustomCard.BuildCard<Quantum>((card) => Quantum.card = card);
+            CustomCard.BuildCard<EmpowerAdd>((card) => EmpowerAdd.card = card);
+            CustomCard.BuildCard<FrostSlamAdd>((card) => FrostSlamAdd.card = card);
+            CustomCard.BuildCard<ImplodeAdd>((card) => ImplodeAdd.card = card);
+            CustomCard.BuildCard<StaticFieldAdd>((card) => StaticFieldAdd.card = card);
+            CustomCard.BuildCard<SupernovaAdd>((card) => SupernovaAdd.card = card);
+            CustomCard.BuildCard<GetCloser>((card) => GetCloser.card = card);
         }
     }
 }
