@@ -52,6 +52,7 @@ namespace MoCards
             CustomCard.BuildCard<Crusher>();
             CustomCard.BuildCard<SawAdd>();
             CustomCard.BuildCard<Quasar>();
+            CustomCard.BuildCard<Cards.Ping>();
         }
     }
 }
