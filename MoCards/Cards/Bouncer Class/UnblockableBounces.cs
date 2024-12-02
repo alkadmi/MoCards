@@ -16,6 +16,7 @@ namespace MoCards.Cards
 {
     class UnblockableBounces : CustomCard
     {
+        internal static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             CardInfoExtension.GetAdditionalData(cardInfo).canBeReassigned = false;

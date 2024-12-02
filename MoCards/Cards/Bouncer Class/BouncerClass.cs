@@ -1,5 +1,4 @@
-﻿/*
-using ClassesManagerReborn;
+﻿using ClassesManagerReborn;
 using System.Collections;
 
 
@@ -11,9 +10,18 @@ namespace MoCards.Cards
 
         public override IEnumerator Init()
         {
-            ClassesRegistry.Register(cardhol, CardType.Entry);
+            while (!(Bouncer.card && ExplosiveBounces.card && ExtraBounces.card && FasterBounces.card && LoyalBounces.card && StrongerBounces.card && UnblockableBounces.card)) yield return null;
+            {
+                ClassesRegistry.Register(Bouncer.card, CardType.Entry);
+                ClassesRegistry.Register(ExplosiveBounces.card, CardType.Card, Bouncer.card);
+                ClassesRegistry.Register(ExtraBounces.card, CardType.Entry, Bouncer.card);
+                ClassesRegistry.Register(FasterBounces.card, CardType.Entry, Bouncer.card);
+                ClassesRegistry.Register(LoyalBounces.card, CardType.Card, Bouncer.card);
+                ClassesRegistry.Register(StrongerBounces.card, CardType.Card, Bouncer.card);
+                ClassesRegistry.Register(UnblockableBounces.card, CardType.Entry, Bouncer.card);
+            }
+
         }
     }
     
 }
-*/

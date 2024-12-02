@@ -55,6 +55,12 @@ namespace MoCards
             CustomCard.BuildCard<Cards.Ping>();
             CustomCard.BuildCard<Holster>();
             CustomCard.BuildCard<Quantum>();
+            CustomCard.BuildCard<EmpowerAdd>();
+            CustomCard.BuildCard<FrostSlamAdd>();
+            CustomCard.BuildCard<ImplodeAdd>();
+            CustomCard.BuildCard<StaticFieldAdd>();
+            CustomCard.BuildCard<SupernovaAdd>();
+            CustomCard.BuildCard<GetCloser>();
         }
     }
 }

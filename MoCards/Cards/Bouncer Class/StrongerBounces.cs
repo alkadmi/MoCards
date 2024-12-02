@@ -16,6 +16,7 @@ namespace MoCards.Cards
 {
     class StrongerBounces : CustomCard
     {
+        internal static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;

@@ -18,6 +18,7 @@ namespace MoCards.Cards
 {
     class LoyalBounces : CustomCard
     {
+        internal static CardInfo card = null;
         public NoSelfDamageBounceEffect effect = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {

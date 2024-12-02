@@ -6,26 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
-using UnboundLib.Extensions;
 using UnityEngine;
 
 
 namespace MoCards.Cards
 {
-    class AngryBlocker : CustomCard
+    class FrostSlamAdd : CustomCard
     {
         internal static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
             CardInfoExtension.GetAdditionalData(cardInfo).canBeReassigned = false;
-            block.additionalBlocks = 1;
-            block.cdMultiplier = .90f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            
+            CardInfo cardWithObjectName = ModdingUtils.Utils.Cards.instance.GetCardWithObjectName("Frost slam");
+            ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardWithObjectName, false, "", 0f, 0f);
             //Edits values on player when card is selected
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
         }
@@ -38,11 +38,11 @@ namespace MoCards.Cards
 
         protected override string GetTitle()
         {
-            return "Angry Blocker";
+            return "Frost Slam Add";
         }
         protected override string GetDescription()
         {
-            return "Become an angry blocking maniac";
+            return "Slow enemies around you when you block";
         }
         protected override GameObject GetCardArt()
         {
@@ -59,15 +59,15 @@ namespace MoCards.Cards
                 new CardInfoStat()
                 {
                     positive = true,
-                    stat = "Blocks",
-                    amount = "1",
+                    stat = "Health",
+                    amount = "30%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "Block cooldown",
-                    amount = "10%",
+                    positive = false,
+                    stat = "block cooldown",
+                    amount = "+0.25%",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };

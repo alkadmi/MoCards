@@ -1,5 +1,6 @@
 ﻿using CR;
 using CR.MonoBehaviors;
+using ModdingUtils.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,11 @@ namespace MoCards.Cards
 {
     class Ping : CustomCard
     {
+        internal static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
+            cardInfo.allowMultiple = false;
+            CardInfoExtension.GetAdditionalData(cardInfo).canBeReassigned = false;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }

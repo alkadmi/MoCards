@@ -6,26 +6,25 @@ using System.Text;
 using System.Threading.Tasks;
 using UnboundLib;
 using UnboundLib.Cards;
-using UnboundLib.Extensions;
 using UnityEngine;
 
 
 namespace MoCards.Cards
 {
-    class AngryBlocker : CustomCard
+    class StaticFieldAdd : CustomCard
     {
         internal static CardInfo card = null;
         public override void SetupCard(CardInfo cardInfo, Gun gun, ApplyCardStats cardStats, CharacterStatModifiers statModifiers, Block block)
         {
             cardInfo.allowMultiple = false;
             CardInfoExtension.GetAdditionalData(cardInfo).canBeReassigned = false;
-            block.additionalBlocks = 1;
-            block.cdMultiplier = .90f;
             //Edits values on card itself, which are then applied to the player in `ApplyCardStats`
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been setup.");
         }
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
+            CardInfo cardWithObjectName = ModdingUtils.Utils.Cards.instance.GetCardWithObjectName("Static field");
+            ModdingUtils.Utils.Cards.instance.AddCardToPlayer(player, cardWithObjectName, false, "", 0f, 0f);
             //Edits values on player when card is selected
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been added to player {player.playerID}.");
         }
@@ -38,11 +37,11 @@ namespace MoCards.Cards
 
         protected override string GetTitle()
         {
-            return "Angry Blocker";
+            return "Static Field Add";
         }
         protected override string GetDescription()
         {
-            return "Become an angry blocking maniac";
+            return "Blocking creates a field that slows and damages opponents";
         }
         protected override GameObject GetCardArt()
         {
@@ -50,7 +49,7 @@ namespace MoCards.Cards
         }
         protected override CardInfo.Rarity GetRarity()
         {
-            return CardInfo.Rarity.Common;
+            return CardInfo.Rarity.Uncommon;
         }
         protected override CardInfoStat[] GetStats()
         {
@@ -58,16 +57,9 @@ namespace MoCards.Cards
             {
                 new CardInfoStat()
                 {
-                    positive = true,
-                    stat = "Blocks",
-                    amount = "1",
-                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
-                },
-                new CardInfoStat()
-                {
-                    positive = true,
-                    stat = "Block cooldown",
-                    amount = "10%",
+                    positive = false,
+                    stat = "block cooldown",
+                    amount = "0.25s",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 }
             };
