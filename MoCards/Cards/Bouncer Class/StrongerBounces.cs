@@ -1,4 +1,5 @@
-﻿using ModdingUtils.Extensions;
+﻿using ClassesManagerReborn.Util;
+using ModdingUtils.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -49,7 +50,10 @@ namespace MoCards.Cards
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been removed from player {player.playerID}.");
         }
 
-
+        public override void Callback()
+        {
+            ExtensionMethods.GetOrAddComponent<ClassNameMono>(((Component)this).gameObject, false).className = BouncerClass.name;
+        }
         protected override string GetTitle()
         {
             return "Stronger Bounces";

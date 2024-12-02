@@ -16,6 +16,7 @@ using Photon.Pun;
 using UnboundLib.Utils;
 using static System.Net.Mime.MediaTypeNames;
 using ModdingUtils.Extensions;
+using ClassesManagerReborn.Util;
 
 namespace MoCards.Cards
 {
@@ -42,7 +43,10 @@ namespace MoCards.Cards
             //UnityEngine.Debug.Log($"[{MoCards.ModInitials}][Card] {GetTitle()} has been removed from player {player.playerID}.");
         }
 
-
+        public override void Callback()
+        {
+            ExtensionMethods.GetOrAddComponent<ClassNameMono>(((Component)this).gameObject, false).className = AngryBlockerClass.name;
+        }
         protected override string GetTitle()
         {
             return "Saw Add";
