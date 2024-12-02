@@ -54,7 +54,6 @@ namespace MoCards
             CustomCard.BuildCard<Quasar>();
             CustomCard.BuildCard<Cards.Ping>();
             CustomCard.BuildCard<Holster>();
-            CustomCard.BuildCard<Resonate>();
             CustomCard.BuildCard<Quantum>();
         }
     }
