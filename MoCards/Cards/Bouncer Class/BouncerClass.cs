@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-namespace MoCards.Cards
+namespace MoCards.BouncerCards
 {
     class BouncerClass : ClassHandler
     {
@@ -14,13 +14,13 @@ namespace MoCards.Cards
             {
                 yield return null;
             }
-            ClassesRegistry.Register(Bouncer.card, CardType.Entry);
-            ClassesRegistry.Register(ExplosiveBounces.card, CardType.Card, Bouncer.card);
-            ClassesRegistry.Register(ExtraBounces.card, CardType.Entry, Bouncer.card);
-            ClassesRegistry.Register(FasterBounces.card, CardType.Entry, Bouncer.card);
-            ClassesRegistry.Register(LoyalBounces.card, CardType.Card, Bouncer.card);
-            ClassesRegistry.Register(StrongerBounces.card, CardType.Card, Bouncer.card);
-            ClassesRegistry.Register(UnblockableBounces.card, CardType.Entry, Bouncer.card);
+            ClassesRegistry.Register(Bouncer.card, (CardType)1);
+            ClassesRegistry.Register(ExplosiveBounces.card, (CardType)16, Bouncer.card);
+            ClassesRegistry.Register(ExtraBounces.card, (CardType)16, Bouncer.card);
+            ClassesRegistry.Register(FasterBounces.card, (CardType)16, Bouncer.card);
+            ClassesRegistry.Register(LoyalBounces.card, (CardType)16, Bouncer.card);
+            ClassesRegistry.Register(StrongerBounces.card, (CardType)16, Bouncer.card);
+            ClassesRegistry.Register(UnblockableBounces.card, (CardType)16, Bouncer.card);
 
         }
     }

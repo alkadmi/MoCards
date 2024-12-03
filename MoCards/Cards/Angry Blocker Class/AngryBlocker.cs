@@ -11,7 +11,7 @@ using UnboundLib.Extensions;
 using UnityEngine;
 
 
-namespace MoCards.Cards
+namespace MoCards.AngryBlockerCards
 {
     class AngryBlocker : CustomCard
     {

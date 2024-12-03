@@ -14,7 +14,7 @@ using MoCards.Effects;
 using ModdingUtils.Extensions;
 
 
-namespace MoCards.Cards
+namespace MoCards.BouncerCards
 {
     class LoyalBounces : CustomCard
     {

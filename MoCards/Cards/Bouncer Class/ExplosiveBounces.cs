@@ -14,7 +14,7 @@ using ClassesManagerReborn;
 using ClassesManagerReborn.Patchs;
 using RarityLib.Utils;
 
-namespace MoCards.Cards
+namespace MoCards.BouncerCards
 {
     class ExplosiveBounces : CustomCard
     {

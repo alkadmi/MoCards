@@ -13,7 +13,7 @@ using UnityEngine;
 using static CardInfoStat;
 
 
-namespace MoCards.Cards
+namespace MoCards.AngryBlockerCards
 {
     class Ping : CustomCard
     {

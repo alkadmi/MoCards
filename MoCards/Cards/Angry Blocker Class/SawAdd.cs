@@ -18,7 +18,7 @@ using static System.Net.Mime.MediaTypeNames;
 using ModdingUtils.Extensions;
 using ClassesManagerReborn.Util;
 
-namespace MoCards.Cards
+namespace MoCards.AngryBlockerCards
 {
     class SawAdd : CustomCard
     {

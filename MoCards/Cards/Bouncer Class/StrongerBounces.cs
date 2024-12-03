@@ -13,7 +13,7 @@ using UnboundLib.Utils;
 using UnityEngine;
 
 
-namespace MoCards.Cards
+namespace MoCards.BouncerCards
 {
     class StrongerBounces : CustomCard
     {

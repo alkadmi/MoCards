@@ -9,7 +9,7 @@ using UnboundLib;
 using UnboundLib.Cards;
 using UnityEngine;
 
-namespace MoCards.Cards
+namespace MoCards.AngryBlockerCards
 {
     class Crusher : CustomCard
     {

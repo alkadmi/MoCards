@@ -9,6 +9,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using MoCards.Patches;
 using System;
+using MoCards.AngryBlockerCards;
+using MoCards.BouncerCards;
 
 
 
@@ -53,7 +55,7 @@ namespace MoCards
             CustomCard.BuildCard<Crusher>((card) => Crusher.card = card);
             CustomCard.BuildCard<SawAdd>(((card) => SawAdd.card = card));
             CustomCard.BuildCard<Quasar>((card) => Quasar.card = card);
-            CustomCard.BuildCard<Cards.Ping>((card) => Cards.Ping.card = card);
+            CustomCard.BuildCard<AngryBlockerCards.Ping>((card) => AngryBlockerCards.Ping.card = card);
             CustomCard.BuildCard<Holster>((card) => Holster.card = card);
             CustomCard.BuildCard<Quantum>((card) => Quantum.card = card);
             CustomCard.BuildCard<EmpowerAdd>((card) => EmpowerAdd.card = card);

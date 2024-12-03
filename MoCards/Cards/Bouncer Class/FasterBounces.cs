@@ -12,7 +12,7 @@ using System.Collections.ObjectModel;
 using UnboundLib.Utils;
 using ModdingUtils.Extensions;
 
-namespace MoCards.Cards
+namespace MoCards.BouncerCards
 {
     class FasterBounces : CustomCard
     {
