@@ -29,7 +29,7 @@ namespace MoCards
     {
         private const string ModId = "com.rounds.alkadmi.MoCards";
         private const string ModName = "MoCards";
-        public const string Version = "0.1.0"; // What version are we on (major.minor.patch)?
+        public const string Version = "1.0.0"; // What version are we on (major.minor.patch)?
         public const string ModInitials = "MC";
 
         public static MoCards instance { get; private set; }
