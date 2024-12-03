@@ -52,7 +52,7 @@ namespace MoCards.Cards
 
         public override void Callback()
         {
-            ExtensionMethods.GetOrAddComponent<ClassNameMono>(((Component)this).gameObject, false);
+            gameObject.GetOrAddComponent<ClassNameMono>().className = BouncerClass.name;
         }
         protected override string GetTitle()
         {
